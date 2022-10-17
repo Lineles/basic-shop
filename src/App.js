@@ -1,19 +1,27 @@
-import { Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+
 import Cart from "./Components/Cart/Cart";
 import Homepage from "./Components/Homepage/Homepage";
+import Navbar from "./Components/Navbar/Navbar";
+
 import './App.css';
 
 function App() {
+
+
   return (
-    <div className="App">
+    <Router>
+    <Navbar /> 
+    
+      <Routes> 
+        <Route path="/" element={<Homepage />  } /> 
+        <Route path="/Cart" element={<Cart /> }/>
+       
+      </Routes>   
+          
+  </Router> 
 
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="about" element={<Cart />} />
-          </Routes>
-
-
-    </div>
+   
   );
 }
 
