@@ -1,6 +1,6 @@
 import "./Cart.css"
 
-function Cart () {
+function Cart (props) {
 
     return(
 

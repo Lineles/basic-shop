@@ -30,12 +30,14 @@ function Homepage () {
              {product.map(
                 function(product) {
                     return <Products
+                    key={product.id}
                     title={product.title}
                     price={product.price}
                     image={product.image}
                     category={product.category}
                     description={product.description}
                     id={product.id} /> 
+                    
                 }
             )}  
 

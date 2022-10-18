@@ -6,8 +6,16 @@ import Navbar from "./Components/Navbar/Navbar";
 import ProductDetail from "./Components/ProductDetail/ProduktDetail";
 
 import './App.css';
+import { useState } from "react";
 
 function App() {
+
+
+  const [CartProducts, setCartProducts] = useState([])
+
+  function AddProductToCart (productToAdd) {
+    setCartProducts([...CartProducts, productToAdd])
+  }
 
 
   return (
@@ -15,10 +23,10 @@ function App() {
     <Navbar /> 
     
       <Routes> 
-        <Route exact path="/" element={<Homepage />  } /> 
-        <Route path="/Cart" element={<Cart /> }/>
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="*" element={<Navigate to="/" replace /> } /> 
+        <Route exact path="/products" element={<Homepage /> } /> 
+        <Route path="/Cart" element={<Cart CartProducts={CartProducts}/> }/>
+        <Route path="/products/:id" element={<ProductDetail AddProductToCart={AddProductToCart}/>} />
+        <Route path="*" element={<Navigate to="/products" replace /> } /> 
       </Routes>   
           
   </Router> 
