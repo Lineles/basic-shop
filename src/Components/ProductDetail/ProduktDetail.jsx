@@ -14,15 +14,17 @@ function ProductDetail (props) {
     useEffect(() => {
         axios.get(`https://fakestoreapi.com/products/${id}`)
         .then(response => setSelectetProduct(response.data))
-    }, );
+    },  );
     return(
 
-        <div>
-                <img className="Products-image" src={selectetProduct?.image} alt={selectetProduct?.title} />
-                <h1 className="Products-h1"> This is our {selectetProduct?.title} </h1>
-                <p>{selectetProduct?.description}</p>
-                <p>{selectetProduct?.price}</p>
-                <button onClick={() => props.AddProductToCart(selectetProduct)}>Add to Cart</button>
+        <div className="ProductDetail-Container">
+                <img className="ProductDetail-image" src={selectetProduct?.image} alt={selectetProduct?.title} />
+                <div className="ProductDetail-Info-box">
+                    <h1 className="ProductDetail-Title"> This is our {selectetProduct?.title} </h1>
+                    <p className="ProductDetail-description">{selectetProduct?.description}</p>
+                    <p className="ProductDetail-price">{selectetProduct?.price}</p>
+                    <button className="ProductDetail-addToCart-button" onClick={() => props.AddProductToCart(selectetProduct)}>Add to Cart</button>
+                </div>  
         </div>
     )
 }; 

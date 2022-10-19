@@ -14,7 +14,34 @@ function App() {
   const [CartProducts, setCartProducts] = useState([])
 
   function AddProductToCart (productToAdd) {
-    setCartProducts([...CartProducts, productToAdd])
+
+    const existingProduct = CartProducts.find(product => product.id === productToAdd.id)
+      if(existingProduct !== undefined){
+        handleProductQuantity(existingProduct, true)
+
+      } else {
+        setCartProducts([...CartProducts, {...productToAdd, quantity: 1}])
+      }
+  }
+
+
+  function handleProductQuantity (productToChangeQuantity, increasQuantity) {
+      if(increasQuantity){
+        productToChangeQuantity.quantity += 1;
+      }else{
+        productToChangeQuantity.quantity -= 1;
+      }
+
+        const newCartProductsArray = CartProducts.map(product => 
+          product.id === productToChangeQuantity.id ? 
+          {...productToChangeQuantity, quantity: productToChangeQuantity.quantity} : product
+          )
+          setCartProducts(newCartProductsArray)
+  }
+
+  function RemoveProductfromCart (productToRemove) {
+    const newCartProductsArray = CartProducts.filter(product => product.id !== productToRemove.id)
+    setCartProducts(newCartProductsArray)
   }
 
 
@@ -23,8 +50,8 @@ function App() {
     <Navbar /> 
     
       <Routes> 
-        <Route exact path="/products" element={<Homepage /> } /> 
-        <Route path="/Cart" element={<Cart CartProducts={CartProducts}/> }/>
+        <Route exact path="/products" element={<Homepage AddProductToCart={AddProductToCart}/> } /> 
+        <Route path="/Cart" element={<Cart CartProducts={CartProducts} RemoveProductfromCart={RemoveProductfromCart} AddProductToCart={AddProductToCart} handleProductQuantity={handleProductQuantity}/> }/>
         <Route path="/products/:id" element={<ProductDetail AddProductToCart={AddProductToCart}/>} />
         <Route path="*" element={<Navigate to="/products" replace /> } /> 
       </Routes>   

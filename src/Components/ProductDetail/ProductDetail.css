@@ -1,0 +1,38 @@
+
+
+.ProductDetail-Container{
+    border: solid black 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding: 30px 110px;
+}
+
+.ProductDetail-image{
+    border: solid black 1px;
+    height: 368px;
+    padding: 20px;
+    border-radius: 60px;
+}
+
+.ProductDetail-Info-box{
+    border: solid black 1px;
+}
+
+.ProductDetail-Title{
+    border: solid black 1px;
+}
+
+.ProductDetail-description{
+    border: solid black 1px;
+}
+
+.ProductDetail-price{
+    border: solid black 1px;
+}
+
+.ProductDetail-addToCart-button{
+    border: solid black 1px;
+}

@@ -1,20 +1,41 @@
 .Products-div{
+    overflow: hidden;
     border: solid black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 250px;
+    width: 270px;
     height: 500px;
     overflow: hidden;
+    border-radius: 24px;
+    text-decoration: none;
 }
 
+.Products-image-div{
+    width: 200px;
+    margin: auto;
+    padding: 5px 0px;
+   
+}
 .Products-image{
     border: solid black;
-    width: 200px;
+    width: 100%;
+    max-height: 280px;
 }
 
-.Products-image{
+.Products-h1{
     border: solid black;
-    width: 200px;
+    font-size: 20px;
+    margin: 8px;
+    text-align: center;
+    color: black;
+}
+
+.Products-description{
+    border: solid black;
+}
+
+.Products-price{
+    border: solid black;
 }
