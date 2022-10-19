@@ -10,7 +10,7 @@ import { useState } from "react";
 
 function App() {
 
-
+  const [ProductSerchValue, setProductSerchValue] = useState('')
   const [CartProducts, setCartProducts] = useState([])
 
   function AddProductToCart (productToAdd) {
@@ -39,18 +39,24 @@ function App() {
           setCartProducts(newCartProductsArray)
   }
 
+
   function RemoveProductfromCart (productToRemove) {
     const newCartProductsArray = CartProducts.filter(product => product.id !== productToRemove.id)
     setCartProducts(newCartProductsArray)
   }
 
 
+  function HandleProductSerch (SerchInputValue) {
+    setProductSerchValue(SerchInputValue)
+  }
+
+
   return (
     <Router>
-    <Navbar /> 
+    <Navbar HandleProductSerch={HandleProductSerch} /> 
     
       <Routes> 
-        <Route exact path="/products" element={<Homepage AddProductToCart={AddProductToCart}/> } /> 
+        <Route exact path="/products" element={<Homepage AddProductToCart={AddProductToCart} ProductSerchValue={ProductSerchValue} /> } /> 
         <Route path="/Cart" element={<Cart CartProducts={CartProducts} RemoveProductfromCart={RemoveProductfromCart} AddProductToCart={AddProductToCart} handleProductQuantity={handleProductQuantity}/> }/>
         <Route path="/products/:id" element={<ProductDetail AddProductToCart={AddProductToCart}/>} />
         <Route path="*" element={<Navigate to="/products" replace /> } /> 

@@ -8,7 +8,7 @@ import "./Homepage.css"
 
 
 
-function Homepage () {
+function Homepage (props) {
 
     const [product, setProduct] = React.useState([]);
 
@@ -27,7 +27,11 @@ function Homepage () {
     return(
 
         <div className="Shop-flex">
-             {product.map(
+             {product.filter(
+                item => props.ProductSerchValue !== '' ? 
+
+                : item
+             ).map(
                 function(product) {
                     return <Products
                     key={product.id}
