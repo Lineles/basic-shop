@@ -29,7 +29,7 @@ function Homepage (props) {
         <div className="Shop-flex">
              {product.filter(
                 item => props.ProductSerchValue !== '' ? 
-
+                item.title.toLowerCase().includes(props.ProductSerchValue.toLowerCase()) ? item : null
                 : item
              ).map(
                 function(product) {

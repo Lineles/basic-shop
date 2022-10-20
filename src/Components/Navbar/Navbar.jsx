@@ -5,11 +5,20 @@ import "./Navbar.css"
 function Navbar (props) {
 
 
-    const [serchProduct, setProductSerch] = useState
+    const [serchProduct, setProductSerch] = useState('')
 
     const handleSerchInput = (event) => {
-        event.preventDefault();
-        props.handleSerchInput(serchProduct); 
+        event.preventDefault()
+        props.HandleProductSerch(serchProduct)
+    }
+
+    function SerchInput (input) {
+        if (input !== '') {
+            setProductSerch(input)
+        } else {
+            setProductSerch(input)
+            props.HandleProductSerch(serchProduct)
+        }
     }
 
 
@@ -25,8 +34,8 @@ function Navbar (props) {
                 <input 
                 type="text" 
                 placeholder="Find your Product" 
-                onChange={(event) = setProductSerch(event.target.value)}
-                value={serchProduct }
+                onChange={(event) => SerchInput(event.target.value)}
+                value={serchProduct}
                 />
                 <button>Find</button>
             </form>
