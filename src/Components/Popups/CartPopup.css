@@ -1,0 +1,36 @@
+.CartPopup-container{
+ border: solid black 1px;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ 
+}
+
+.CartPopup{
+    border: solid black 1px; 
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    
+}
+
+.CartPopup-h1{
+    border: solid black 1px;
+}
+
+.CartPopup-price{
+    border: solid black 1px;
+}
+
+.CartPopup-message{
+    border: solid black 1px;
+}
+

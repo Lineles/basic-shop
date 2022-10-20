@@ -20,8 +20,12 @@ function App() {
         handleProductQuantity(existingProduct, true)
 
       } else {
-        setCartProducts([...CartProducts, {...productToAdd, quantity: 1}])
+        const newCartProduct = [...CartProducts, {...productToAdd, quantity: 1}]
+        setCartProducts(newCartProduct)
+        // Use Local Storrage
+        window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(newCartProduct)  )
       }
+
   }
 
 
@@ -37,28 +41,49 @@ function App() {
           {...productToChangeQuantity, quantity: productToChangeQuantity.quantity} : product
           )
           setCartProducts(newCartProductsArray)
+          // Use Local Storrage
+          window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(newCartProductsArray))
   }
 
 
   function RemoveProductfromCart (productToRemove) {
     const newCartProductsArray = CartProducts.filter(product => product.id !== productToRemove.id)
     setCartProducts(newCartProductsArray)
+    // Use Local Storrage
+    window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(newCartProductsArray)  )
   }
 
 
   function HandleProductSerch (SerchInputValue) {
     setProductSerchValue(SerchInputValue)
   }
-
+  
+  function ClearCartItems () {
+      setCartProducts([])
+      // Use Local Storrage
+      window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(setCartProducts([]))  )
+  }
 
   return (
     <Router>
     <Navbar HandleProductSerch={HandleProductSerch} /> 
     
       <Routes> 
-        <Route exact path="/products" element={<Homepage AddProductToCart={AddProductToCart} ProductSerchValue={ProductSerchValue} /> } /> 
-        <Route path="/Cart" element={<Cart CartProducts={CartProducts} RemoveProductfromCart={RemoveProductfromCart} AddProductToCart={AddProductToCart} handleProductQuantity={handleProductQuantity}/> }/>
-        <Route path="/products/:id" element={<ProductDetail AddProductToCart={AddProductToCart}/>} />
+        <Route exact path="/products" element={<Homepage 
+                                            AddProductToCart={AddProductToCart} 
+                                            ProductSerchValue={ProductSerchValue}
+                                            CartProducts={CartProducts} /> 
+                                            } /> 
+        <Route path="/Cart" element={<Cart 
+                                            CartProducts={CartProducts}   
+                                            RemoveProductfromCart={RemoveProductfromCart} 
+                                            AddProductToCart={AddProductToCart} 
+                                            handleProductQuantity={handleProductQuantity} 
+                                            ClearCartItems={ClearCartItems}/> 
+                                            }/>
+        <Route path="/products/:id" element={<ProductDetail 
+                                            AddProductToCart={AddProductToCart}
+                                            />} />
         <Route path="*" element={<Navigate to="/products" replace /> } /> 
       </Routes>   
           

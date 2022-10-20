@@ -1,6 +1,21 @@
+import React from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import CartPopup from "../Popups/CartPopup";
+
 import "./Cart.css"
 
 function Cart (props) {
+
+    const Navigate = useNavigate()
+    const [isPaymentPopupDisplayd, setPaymentPopup] = useState(false)
+
+    const ConfifmOrder = () => {
+        props.ClearCartItems()
+        setPaymentPopup(false)
+        Navigate('/products')
+    }
 
     const calculateTotal = () => {
         const total = props.CartProducts.reduce((acc, product) => {
@@ -31,7 +46,28 @@ function Cart (props) {
             )
             )}
                     
-          <h1>Total: {calculateTotal()} </h1>
+
+          { props.CartProducts.length ? 
+                    
+                    (   <div>
+                            <h1>Total: {calculateTotal()} </h1>
+                            <button onClick={() => setPaymentPopup(true)}> Checkout </button>
+                        </div>  )
+                        :
+                    ( 
+                        <div>
+                            <h1>There are no Items in Cart</h1> 
+                            <Link 
+                                to="/products"
+                            ><button>Back to Shopping</button></Link>
+                        </div>
+                    )   
+          }
+          
+          
+          {isPaymentPopupDisplayd ? (
+                    <CartPopup total={calculateTotal()} ConfifmOrder={ConfifmOrder}  />
+                    ) : null}
         </div>
     )
 }; 
