@@ -8,6 +8,7 @@ import ProductDetail from "./Components/ProductDetail/ProduktDetail";
 import './App.css';
 import { useState } from "react";
 
+
 function App() {
 
   const [ProductSerchValue, setProductSerchValue] = useState('')
@@ -42,7 +43,7 @@ function App() {
           )
           setCartProducts(newCartProductsArray)
           // Use Local Storrage
-          window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(newCartProductsArray))
+          window.localStorage.setItem('cartProductsLocalStorage', JSON.stringify(newCartProductsArray))
   }
 
 
@@ -50,7 +51,7 @@ function App() {
     const newCartProductsArray = CartProducts.filter(product => product.id !== productToRemove.id)
     setCartProducts(newCartProductsArray)
     // Use Local Storrage
-    window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(newCartProductsArray)  )
+    window.localStorage.setItem('cartProductsLocalStorage', JSON.stringify(newCartProductsArray)  )
   }
 
 
@@ -61,7 +62,7 @@ function App() {
   function ClearCartItems () {
       setCartProducts([])
       // Use Local Storrage
-      window.localStorage.setItem('Cart Products in local Storage', JSON.stringify(setCartProducts([]))  )
+      window.localStorage.setItem('cartProductsLocalStorage', JSON.stringify(setCartProducts([]))  )
   }
 
   return (
@@ -84,7 +85,10 @@ function App() {
         <Route path="/products/:id" element={<ProductDetail 
                                             AddProductToCart={AddProductToCart}
                                             />} />
-        <Route path="*" element={<Navigate to="/products" replace /> } /> 
+      
+                                          
+        <Route path="*" element={<Navigate to="/products" replace /> } />
+
       </Routes>   
           
   </Router> 

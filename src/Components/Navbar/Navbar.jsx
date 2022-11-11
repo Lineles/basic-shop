@@ -27,18 +27,17 @@ function Navbar (props) {
         <div className="Navbar-container">
             
             <Link to="/" className="Navbar-Link">Homepage</Link>
-            <Link to="/Cart" className="Navbar-Link">Cart</Link>
-            
-
             <form onSubmit={handleSerchInput}> 
                 <input 
                 type="text" 
                 placeholder="Find your Product" 
                 onChange={(event) => SerchInput(event.target.value)}
                 value={serchProduct}
+                className="Navbar-Serchinput"
                 />
-                <button>Find</button>
+                <button className="Navbar-Serch-button">Find</button>
             </form>
+            <Link to="/Cart" className="Navbar-Link">Cart</Link>
         </div>
     )
 }; 

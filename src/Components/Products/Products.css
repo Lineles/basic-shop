@@ -1,6 +1,5 @@
 .Products-div{
-    overflow: hidden;
-    border: solid black;
+    border: 2px solid var(--collor-black);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,6 +9,7 @@
     overflow: hidden;
     border-radius: 24px;
     text-decoration: none;
+    background-color: var(--collor-grey);
 }
 
 .Products-image-div{
@@ -19,17 +19,22 @@
    
 }
 .Products-image{
-    border: solid black;
     width: 100%;
     max-height: 280px;
+    border-radius: 20px;
+    border: solid 2px var(--collor-green);
 }
 
 .Products-h1{
-    border: solid black;
-    font-size: 20px;
-    margin: 8px;
+    width: 100%;
+    font-size: 17px;
+    margin: 8px 0px;
     text-align: center;
     color: black;
+    padding: 10px 37px;
+    background-color: var(--collor-purple);
+    border-top: 2px solid var(--collor-black);
+    border-bottom: 2px solid var(--collor-black);
 }
 
 .Products-description{
@@ -37,5 +42,8 @@
 }
 
 .Products-price{
-    border: solid black;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--collor-black);
 }
