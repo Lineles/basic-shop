@@ -19,22 +19,16 @@ function Cart (props) {
     }
 
     const calculateTotal = () => {
+        
+
         const total = props.CartProducts.reduce((acc, product) => {
-            
-            return ( acc + (product.price * product.quantity).toFixed(2))
+            let itemPrice = (product.price * product.quantity).toFixed(2)
+            return ( acc + Number(itemPrice))
         }, 0);
-        return total
+        return total.toFixed(2)
     }
 
-    // const calculateTotal = () => {
-    //     const total = JSON.parse(window.localStorage.getItem('cartProductsLocalStorage')).reduce((accumulator, product) => {
-    //         return (accumulator + product.price * product.quantity)
-    //     }, 0);
-    //     return total;
-    // }
-
-    
-    
+      
     return(
         <div> 
 
@@ -66,17 +60,20 @@ function Cart (props) {
           { props.CartProducts.length ? 
                     
                     (   <div className="Cart-Total-price-container">
-                            <h1 className="Cart-Total-price">Total: {calculateTotal()} </h1>
-                            <button onClick={() => setPaymentPopup(true)} className="Cart-Checkout-button"> Checkout </button>
+                            <h1 className="Cart-Total-price">Total: {calculateTotal()}€ </h1>
+                            <div className="ProductDetail-button-leist"> 
+                                <button onClick={() => setPaymentPopup(true)} className="Cart-Checkout-button"> Checkout </button>
+                            </div>
                         </div>  )
                         :
                         ( 
                         <div className="Cart-Total-price-container">
-                            <h1 className="Cart-Total-price">There are no Items in Cart</h1> 
+                            <h1 className="Cart-Total-price">There are no Items in Cart!</h1> 
                             <Link 
                                 to="/products"
-                                className="Cart-Checkout-button"
-                            ><button>Back to Shopping</button></Link>
+                                className="ProductDetail-button-leist"
+                                
+                            ><button className="Cart-Checkout-button">Back to Shopping</button></Link>
                         </div>
                     )   
           }

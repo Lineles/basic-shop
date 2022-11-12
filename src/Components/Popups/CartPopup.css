@@ -1,36 +1,35 @@
 .CartPopup-container{
- border: solid black 1px;
- position: absolute;
- width: 100%;
- height: 100%;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- 
+    border: solid black 1px;
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--collor-white);
 }
 
 .CartPopup{
-    border: solid black 1px; 
-    width: 300px;
-    height: 300px;
+    border: solid 4px var(--collor-black);
+    width: 400px;
+    height: 270px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
-    
+    background-color: var(--collor-cream);
+    margin-top: 130px;
+    border-radius: 20px;
 }
 
-.CartPopup-h1{
-    border: solid black 1px;
-}
-
-.CartPopup-price{
-    border: solid black 1px;
-}
 
 .CartPopup-message{
     border: solid black 1px;
+    width: 50%;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 6px;
+    color: black;
 }
 
